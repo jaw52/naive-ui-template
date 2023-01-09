@@ -1,5 +1,13 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import router from '@/route';
+import App from './App.vue';
+import directives from './directives';
+import store from './store';
 
-createApp(App).mount('#app')
+async function setupApp() {
+	const app = createApp(App).use(router).use(store).use(directives);
+	await router.isReady();
+	app.mount('#app');
+}
+
+await setupApp();
