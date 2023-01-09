@@ -12,7 +12,7 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "paths": { "@/*": ["src/*"] },
     "types": ["naive-ui/volar"],
     "noEmit": true

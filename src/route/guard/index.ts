@@ -2,7 +2,7 @@ import { LocationQueryRaw, Router } from 'vue-router';
 import { createDiscreteApi } from '@/utils/createDiscreteApi';
 import { isLogin } from '@/utils/auth';
 import { useTitle } from '@vueuse/core';
-import { RoutePath } from '@/configs/constant';
+import { RoutePath } from '@/enums/route';
 
 export default function createRouteGuard(router: Router) {
 	const { loadingBar } = createDiscreteApi();

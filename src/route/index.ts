@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import createRouteGuard from '@/route/guard';
-import { RoutePath } from '@/configs/constant';
+import { RoutePath } from '@/enums/route';
 
 const routes: RouteRecordRaw[] = [
 	{
@@ -8,7 +8,8 @@ const routes: RouteRecordRaw[] = [
 		redirect: RoutePath.LoginPath,
 	},
 	{
-		path: '/login',
+		path: `/${RoutePath.LoginPath}`,
+		name: RoutePath.LoginPath,
 		component: () => import('@/views/login/index.vue'),
 		meta: {
 			title: '登录',

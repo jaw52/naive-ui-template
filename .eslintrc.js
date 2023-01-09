@@ -48,6 +48,12 @@ module.exports = {
 				'no-undef': 0,
 			},
 		},
+		{
+			files: ['**/enums/*.ts'],
+			rules: {
+				'no-shadow': 0,
+			},
+		},
 	],
 	// 具体的eslint规则，可覆盖extends的默认规则
 	rules: {
@@ -64,6 +70,7 @@ module.exports = {
 		],
 		'import/no-extraneous-dependencies': 0,
 		'import/prefer-default-export': 0,
+		'import/no-cycle': 0,
 		'no-param-reassign': 0,
 		// Vue: Recommended rules to be closed or modify
 		'vue/require-default-prop': 0,
@@ -72,7 +79,5 @@ module.exports = {
 		'@typescript-eslint/ban-ts-comment': 0,
 		'@typescript-eslint/no-empty-function': 1,
 		'@typescript-eslint/no-explicit-any': 0,
-		// 	待解决的
-		'no-shadow': 0,
 	},
 };
