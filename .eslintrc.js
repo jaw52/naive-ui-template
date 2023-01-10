@@ -71,6 +71,7 @@ module.exports = {
 		'import/no-extraneous-dependencies': 0,
 		'import/prefer-default-export': 0,
 		'import/no-cycle': 0,
+		'import/order': 0,
 		'no-param-reassign': 0,
 		// Vue: Recommended rules to be closed or modify
 		'vue/require-default-prop': 0,

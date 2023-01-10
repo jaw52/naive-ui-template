@@ -6,7 +6,7 @@
 				<div class="view-account-top-logo">
 					<img :src="logoImage" alt="" />
 				</div>
-				<div class="view-account-top-desc">时间要加速了</div>
+				<div class="view-account-top-desc">你相信引力吗</div>
 			</div>
 			<div class="view-account-form">
 				<n-form
@@ -95,17 +95,18 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { FormRules, useMessage } from 'naive-ui';
 import { useUserStore } from '@/store';
 import { RoutePath } from '@/enums/route';
 import logoImage from '@/assets/images/account-logo.png';
 import {
-	PersonOutline,
 	LockClosedOutline,
-	LogoGithub,
 	LogoFacebook,
+	LogoGithub,
+	PersonOutline,
 } from '@vicons/ionicons5';
+import { Tips } from '@/enums/tips';
 
 interface FormState {
 	username: string;
@@ -131,13 +132,11 @@ const rules: FormRules = {
 const userStore = useUserStore();
 
 const router = useRouter();
-const route = useRoute();
 
 const handleSubmit = () => {
 	formRef.value.validate(async (errors) => {
 		if (!errors) {
 			const { username, password } = formInline;
-			message.loading('登录中...');
 			loading.value = true;
 
 			const params: FormState = {
@@ -147,19 +146,16 @@ const handleSubmit = () => {
 
 			try {
 				await userStore.login(params);
-				message.destroyAll();
+				const { redirect, ...othersQuery } = router.currentRoute.value.query;
 
-				const toPath = decodeURIComponent(
-					(route.query?.redirect || '/') as string
-				);
-				message.success('登录成功，即将进入系统');
-				if (route.name === RoutePath.LoginPath) {
-					await router.replace('/');
-				} else {
-					await router.replace(toPath);
-				}
-			} catch (e) {
-				message.info('登录失败');
+				await router.push({
+					name: (redirect as string) || RoutePath.DefaultPath,
+					query: {
+						...othersQuery,
+					},
+				});
+
+				message.success(Tips.Welcome);
 			} finally {
 				loading.value = false;
 			}

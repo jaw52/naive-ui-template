@@ -30,6 +30,9 @@ export default defineConfig({
 		host: true,
 		port: 3032,
 	},
+	define: {
+		'process.env': {},
+	},
 	resolve: {
 		alias: [
 			{

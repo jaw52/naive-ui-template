@@ -1,6 +1,6 @@
-import axios from 'axios';
 import type { RouteRecordNormalized } from 'vue-router';
 import { UserState } from '@/store/modules/user';
+import axiosRequest from '@/utils/axiosRequest';
 
 export interface LoginData {
 	username: string;
@@ -12,17 +12,17 @@ export interface LoginRes {
 }
 
 export function login(data: LoginData) {
-	return axios.post<LoginRes>('/api/user/login', data);
+	return axiosRequest.post<LoginRes>('/user/login', data);
 }
 
 export function logout() {
-	return axios.post<LoginRes>('/api/user/logout');
+	return axiosRequest.post<LoginRes>('/user/logout');
 }
 
 export function getUserInfo() {
-	return axios.post<UserState>('/api/user/info');
+	return axiosRequest.post<UserState>('/user/info');
 }
 
 export function getMenuList() {
-	return axios.post<RouteRecordNormalized[]>('/api/user/menu');
+	return axiosRequest.post<RouteRecordNormalized[]>('/user/menu');
 }
