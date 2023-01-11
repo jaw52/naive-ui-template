@@ -1,0 +1,7 @@
+<template>
+	<div>SeniorList</div>
+</template>
+
+<script setup lang="ts"></script>
+
+<style scoped></style>

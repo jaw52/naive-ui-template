@@ -2,18 +2,18 @@ import { Router } from 'vue-router';
 import { useTitle } from '@vueuse/core';
 import { setupLoginInfoGuard } from './setupLoginInfoGuard';
 import { createDiscreteApiNa } from '@/utils/createDiscreteApiNa';
+import { setupPermissionGuard } from '@/router/guard/setupPermissionGuard';
+import { AppMeta } from '@/router/types';
 
 export default function createRouteGuard(router: Router) {
 	const { loadingBar } = createDiscreteApiNa();
+	loadingBar.start();
 
-	router.beforeEach(async (to, from, next) => {
-		loadingBar.start();
-		await setupLoginInfoGuard(to, from, next);
-	});
+	setupLoginInfoGuard(router);
+	setupPermissionGuard(router);
 
-	router.afterEach((to) => {
+	router.afterEach((to: AppMeta) => {
 		loadingBar.finish();
-		// @ts-ignore
-		useTitle(to.meta.title);
+		useTitle(to.meta?.title);
 	});
 }
