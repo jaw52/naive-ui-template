@@ -1,5 +1,6 @@
 import { MainLayout } from '@/router/routes/base';
 import { AppRouteRecordRaw } from '@/router/types';
+import { BackupTableFilled } from '@vicons/material';
 
 const LIST: AppRouteRecordRaw = {
 	path: '/list',
@@ -7,8 +8,8 @@ const LIST: AppRouteRecordRaw = {
 	redirect: '/list/basic-list',
 	component: MainLayout,
 	meta: {
-		title: '主页',
-		requiresAuth: true,
+		title: '表格',
+		icon: BackupTableFilled,
 	},
 	children: [
 		{
@@ -22,7 +23,7 @@ const LIST: AppRouteRecordRaw = {
 		},
 		{
 			path: 'senior-list',
-			name: 'senior',
+			name: 'senior-list',
 			meta: {
 				title: '高级列表',
 				roles: ['admin'],

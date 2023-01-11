@@ -21,22 +21,26 @@
 	"dependencies": {
 		"@ant-design/colors": "^7.0.0",
 		"@vicons/ionicons5": "^0.12.0",
+		"@vicons/material": "^0.12.0",
 		"@vueuse/core": "^9.10.0",
 		"axios": "^0.27.2",
+		"lodash-es": "^4.17.21",
+		"mockjs": "^1.1.0",
 		"naive-ui": "^2.34.3",
 		"pinia": "^2.0.28",
 		"vfonts": "^0.0.3",
 		"vue": "^3.2.45",
-		"vue-router": "^4.1.6",
-		"mockjs": "^1.1.0"
+		"vue-router": "^4.1.6"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.4.0",
 		"@commitlint/config-conventional": "^17.4.0",
+		"@types/lodash-es": "^4.17.6",
 		"@types/node": "^18.11.18",
 		"@typescript-eslint/eslint-plugin": "^5.48.0",
 		"@typescript-eslint/parser": "^5.48.0",
 		"@vitejs/plugin-vue": "^4.0.0",
+		"@vitejs/plugin-vue-jsx": "^3.0.0",
 		"autoprefixer": "^10.4.13",
 		"eslint": "^8.31.0",
 		"eslint-config-airbnb-base": "^15.0.0",

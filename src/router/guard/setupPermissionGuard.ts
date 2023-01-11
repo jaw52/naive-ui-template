@@ -7,7 +7,7 @@ export const setupPermissionGuard = (router: Router) => {
 	router.beforeEach(async (to, from, next) => {
 		const permission = usePermission();
 
-		if (permission.isAuthRouter(to)) {
+		if (permission.isAccessRouter(to)) {
 			next();
 		} else {
 			next({ name: RoutePath.DefaultPath });

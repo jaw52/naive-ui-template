@@ -4,12 +4,11 @@ import { AppMeta } from '@/router/types';
 export default function usePermission() {
 	const userStore = useUserStore();
 
-	// 是否为权限路由
-	const isAuthRouter = (to: AppMeta) =>
-		!to.meta?.requiresAuth ||
-		!to.meta?.roles ||
-		to.meta?.roles?.includes('*') ||
-		to.meta?.roles?.includes(userStore?.role ?? '*');
+	// 是否可访问当前路由
+	const isAccessRouter = (route: AppMeta) =>
+		!route.meta?.roles ||
+		route.meta?.roles?.includes('*') ||
+		route.meta?.roles?.includes(userStore?.role ?? '*');
 
-	return { isAuthRouter };
+	return { isAccessRouter };
 }
