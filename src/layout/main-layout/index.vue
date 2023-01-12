@@ -1,6 +1,6 @@
 <template>
 	<n-layout class="layout">
-		<n-layout-header class="layout-navbar">
+		<n-layout-header class="layout-navbar" bordered>
 			<navbar />
 		</n-layout-header>
 
@@ -15,7 +15,7 @@
 					v-bind="menuConfig"
 					:default-value="route.name"
 					:options="menuTree"
-					:expand-icon="expandIcon"
+					:expand-icon="renderIcon(CaretDownOutline)"
 				/>
 			</n-layout-sider>
 
@@ -27,13 +27,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, h } from 'vue';
+import { ref } from 'vue';
 import RouterContent from '@/layout/main-layout/router-content.vue';
-import { NIcon, MenuProps, LayoutSiderProps } from 'naive-ui';
-import { BookmarkOutline, CaretDownOutline } from '@vicons/ionicons5';
+import { LayoutSiderProps, MenuProps } from 'naive-ui';
+import { CaretDownOutline } from '@vicons/ionicons5';
 import useMenuTree from '@/layout/main-layout/useMenuTree';
 import { useRoute } from 'vue-router';
-import Navbar from '@/layout/main-layout/navbar.vue';
+import Navbar from '@/layout/main-layout/navbar/navbar.vue';
+import { renderIcon } from '@/utils/iconUtil';
 
 const collapsed = ref(false);
 const { menuTree } = useMenuTree();
@@ -56,8 +57,6 @@ const menuConfig: MenuProps = {
 	collapsedIconSize: 15,
 	iconSize: 15,
 };
-
-const expandIcon = () => h(NIcon, null, { default: () => h(CaretDownOutline) });
 </script>
 
 <style scoped lang="less">

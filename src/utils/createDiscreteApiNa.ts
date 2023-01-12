@@ -9,6 +9,7 @@ export function createDiscreteApiNa() {
 		{
 			configProviderProps: {
 				themeOverrides: themeStore.getThemeOverrides,
+				theme: themeStore.getDarkTheme,
 			},
 		}
 	);

@@ -10,6 +10,7 @@ setupMock({
 			if (isLogin()) {
 				const role = window.localStorage.getItem('userRole') || 'admin';
 				return successResponseWrap({
+					avatar: '//inews.gtimg.com/newsapp_bt/0/13084452391/1000',
 					name: '空条承太郎',
 					role,
 				});

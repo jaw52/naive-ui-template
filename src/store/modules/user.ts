@@ -6,12 +6,14 @@ export type RoleType = '' | '*' | 'admin' | 'user';
 
 export interface UserState {
 	name: string;
+	avatar: string;
 	role: RoleType;
 }
 
 export const useUserStore = defineStore({
 	id: 'app-user',
 	state: (): Partial<UserState> => ({
+		avatar: undefined,
 		name: undefined,
 		role: undefined,
 	}),

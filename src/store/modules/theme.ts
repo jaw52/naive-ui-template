@@ -1,11 +1,11 @@
 import { themeColorList } from '@/configs/themeConfig';
 import { defineStore } from 'pinia';
-import { GlobalThemeOverrides } from 'naive-ui';
+import { darkTheme, GlobalTheme, GlobalThemeOverrides } from 'naive-ui';
 import { generate } from '@ant-design/colors';
 
 interface DesignSettingState {
 	// 深色主题
-	darkTheme: boolean;
+	dark: boolean;
 	// 系统风格
 	themeColor: string;
 	// 系统内置风格
@@ -15,13 +15,13 @@ interface DesignSettingState {
 export const useThemeStore = defineStore({
 	id: 'app-theme',
 	state: (): DesignSettingState => ({
-		darkTheme: false,
+		dark: false,
 		themeColor: themeColorList[0],
 		themeColorList,
 	}),
 	getters: {
-		getDarkTheme(): boolean {
-			return this.darkTheme;
+		getDarkTheme(): GlobalTheme | null {
+			return this.dark ? darkTheme : null;
 		},
 		getAppTheme(): string {
 			return this.themeColor;
@@ -45,5 +45,9 @@ export const useThemeStore = defineStore({
 			};
 		},
 	},
-	actions: {},
+	actions: {
+		toggleTheme() {
+			this.dark = !this.dark;
+		},
+	},
 });
