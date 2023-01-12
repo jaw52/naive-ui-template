@@ -4,8 +4,13 @@ import { RoutePath } from '@/enums/route';
 import { LocationQueryRaw, Router } from 'vue-router';
 
 // 守卫登陆信息
-export const setupLoginInfoGuard = (router: Router) => {
+export const setupLoginInfoGuard = (
+	router: Router,
+	loadingBar: { start: () => void }
+) => {
 	router.beforeEach(async (to, from, next) => {
+		loadingBar.start();
+
 		// 已登录的，需要每次查验role
 		if (isLogin()) {
 			const userStore = useUserStore();

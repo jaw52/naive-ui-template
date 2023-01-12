@@ -1,15 +1,14 @@
 import { Router } from 'vue-router';
 import { useTitle } from '@vueuse/core';
 import { setupLoginInfoGuard } from './setupLoginInfoGuard';
-import { createDiscreteApiNa } from '@/utils/createDiscreteApiNa';
+import { useCreateDiscreteApi } from '@/utils/useCreateDiscreteApi';
 import { setupPermissionGuard } from '@/router/guard/setupPermissionGuard';
 import { AppMeta } from '@/router/types';
 
 export default function createRouteGuard(router: Router) {
-	const { loadingBar } = createDiscreteApiNa();
-	loadingBar.start();
+	const { loadingBar } = useCreateDiscreteApi();
 
-	setupLoginInfoGuard(router);
+	setupLoginInfoGuard(router, loadingBar);
 	setupPermissionGuard(router);
 
 	router.afterEach((to: AppMeta) => {

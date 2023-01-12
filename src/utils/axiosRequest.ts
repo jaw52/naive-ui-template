@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { getToken } from '@/utils/auth';
-import { createDiscreteApiNa } from '@/utils/createDiscreteApiNa';
+import { useCreateDiscreteApi } from '@/utils/useCreateDiscreteApi';
 import { Tips } from '@/enums/tips';
 import { useUserStore } from '@/store';
 
@@ -26,7 +26,7 @@ const setupAxios = () => {
 			return config;
 		},
 		(error) => {
-			const { message } = createDiscreteApiNa();
+			const { message } = useCreateDiscreteApi();
 			message.error(Tips.NetError);
 			return Promise.reject(error);
 		}
@@ -34,7 +34,7 @@ const setupAxios = () => {
 
 	instance.interceptors.response.use(
 		(response: AxiosResponse<HttpResponse>) => {
-			const { message, dialog } = createDiscreteApiNa();
+			const { message, dialog } = useCreateDiscreteApi();
 			const res = response.data;
 
 			// 返回不为20000，则请求错误
@@ -64,7 +64,7 @@ const setupAxios = () => {
 			return Promise.resolve(res);
 		},
 		(error) => {
-			const { message } = createDiscreteApiNa();
+			const { message } = useCreateDiscreteApi();
 			message.error(error.msg || Tips.NetError, {
 				duration: 5 * 1000,
 			});

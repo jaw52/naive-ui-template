@@ -37,17 +37,32 @@
 				</tooltip-button>
 			</transition>
 
+			<tooltip-button content="页面设置" @click="visible = true">
+				<n-icon size="16">
+					<settings-outline />
+				</n-icon>
+			</tooltip-button>
+
 			<avatar-dropdown />
 		</n-space>
+
+		<n-drawer v-model:show="visible" :width="300">
+			<n-drawer-content title="页面设置" :native-scrollbar="false">
+				<page-setting />
+			</n-drawer-content>
+		</n-drawer>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { Moon, Search, Sunny } from '@vicons/ionicons5';
+import { ref } from 'vue';
+import { Moon, Search, Sunny, SettingsOutline } from '@vicons/ionicons5';
 import { useThemeStore } from '@/store';
 import TooltipButton from '@/layout/main-layout/components/tooltip-button.vue';
 import AvatarDropdown from '@/layout/main-layout/navbar/avatar-dropdown.vue';
+import PageSetting from '@/layout/main-layout/navbar/page-setting.vue';
 
+const visible = ref(false);
 const themeStore = useThemeStore();
 </script>
 

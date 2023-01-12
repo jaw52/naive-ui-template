@@ -13,7 +13,7 @@
 				<n-menu
 					v-model:collapsed="collapsed"
 					v-bind="menuConfig"
-					:default-value="route.name"
+					:default-value="(route.name as string)"
 					:options="menuTree"
 					:expand-icon="renderIcon(CaretDownOutline)"
 				/>
