@@ -1,7 +1,7 @@
 import { Router } from 'vue-router';
 import { useTitle } from '@vueuse/core';
 import { setupLoginInfoGuard } from './setupLoginInfoGuard';
-import { useCreateDiscreteApi } from '@/utils/useCreateDiscreteApi';
+import { useCreateDiscreteApi } from '@/hooks/useCreateDiscreteApi';
 import { setupPermissionGuard } from '@/router/guard/setupPermissionGuard';
 import { AppMeta } from '@/router/types';
 

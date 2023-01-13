@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { getToken } from '@/utils/auth';
-import { useCreateDiscreteApi } from '@/utils/useCreateDiscreteApi';
+import { useCreateDiscreteApi } from '@/hooks/useCreateDiscreteApi';
 import { Tips } from '@/enums/tips';
 import { useUserStore } from '@/store';
 

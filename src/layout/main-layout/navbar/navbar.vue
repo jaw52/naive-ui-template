@@ -1,20 +1,6 @@
 <template>
 	<div class="navbar">
-		<n-space align="center">
-			<img
-				alt="logo"
-				src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-			/>
-			<n-h3> JoJo Template</n-h3>
-		</n-space>
-
 		<n-space align="center" :size="20">
-			<tooltip-button content="搜索">
-				<n-icon size="16">
-					<search />
-				</n-icon>
-			</tooltip-button>
-
 			<transition name="fade" mode="out-in" appear>
 				<tooltip-button
 					v-if="themeStore.dark"
@@ -55,12 +41,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Moon, Search, Sunny, SettingsOutline } from '@vicons/ionicons5';
-import { useThemeStore } from '@/store';
 import TooltipButton from '@/layout/main-layout/components/tooltip-button.vue';
 import AvatarDropdown from '@/layout/main-layout/navbar/avatar-dropdown.vue';
 import PageSetting from '@/layout/main-layout/navbar/page-setting.vue';
+import { useThemeStore } from '@/store';
+import { Moon, SettingsOutline, Sunny } from '@vicons/ionicons5';
+import { ref } from 'vue';
 
 const visible = ref(false);
 const themeStore = useThemeStore();
@@ -69,13 +55,9 @@ const themeStore = useThemeStore();
 <style scoped lang="less">
 .navbar {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 	height: 100%;
 	padding: 0 20px;
-}
-
-h3 {
-	margin-bottom: 0;
 }
 </style>

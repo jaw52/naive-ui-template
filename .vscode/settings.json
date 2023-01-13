@@ -17,7 +17,6 @@
   "git.enableSmartCommit": true,
   "gutterpreview.paths": {
     "@": "/src",
-    "~@": "/src"
   },
   "i18n-ally.localesPaths": ["src/locales", "src/locales/lang"],
   "material-icon-theme.activeIconPack": "angular",
@@ -38,7 +37,6 @@
   },
   "path-intellisense.mappings": {
     "@": "${workspaceFolder}/src",
-    "~@": "${workspaceFolder}/src"
   },
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.fontSize": 14,

@@ -1,6 +1,8 @@
 <template>
 	<n-dropdown :options="options">
-		<n-avatar round size="small" :src="userStore.avatar" />
+		<div style="display: flex">
+			<n-avatar round size="small" :src="userStore.avatar" />
+		</div>
 	</n-dropdown>
 </template>
 

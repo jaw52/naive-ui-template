@@ -1,62 +1,29 @@
 <template>
-	<n-layout class="layout">
-		<n-layout-header class="layout-navbar" bordered>
-			<navbar />
-		</n-layout-header>
+	<n-layout class="layout" has-sider>
+		<Menu />
 
-		<n-layout has-sider>
-			<n-layout-sider
-				v-model:collapsed="collapsed"
-				v-bind="siderConfig"
-				class="layout-sider"
+		<n-layout>
+			<n-layout-header class="layout-navbar" bordered>
+				<navbar />
+			</n-layout-header>
+
+			<n-layout-content
+				embedded
+				content-style="padding: 24px;"
+				class="layout-content"
 			>
-				<n-menu
-					v-model:collapsed="collapsed"
-					v-bind="menuConfig"
-					:default-value="(route.name as string)"
-					:options="menuTree"
-					:expand-icon="renderIcon(CaretDownOutline)"
-				/>
-			</n-layout-sider>
-
-			<n-layout-content content-style="padding: 24px;" class="layout-content">
-				<router-content />
+				<n-card style="height: 100%">
+					<router-content />
+				</n-card>
 			</n-layout-content>
 		</n-layout>
 	</n-layout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import RouterContent from '@/layout/main-layout/router-content.vue';
-import { LayoutSiderProps, MenuProps } from 'naive-ui';
-import { CaretDownOutline } from '@vicons/ionicons5';
-import useMenuTree from '@/layout/main-layout/useMenuTree';
-import { useRoute } from 'vue-router';
 import Navbar from '@/layout/main-layout/navbar/navbar.vue';
-import { renderIcon } from '@/utils/iconUtil';
-
-const collapsed = ref(false);
-const { menuTree } = useMenuTree();
-const route = useRoute();
-
-// 侧边栏样式配置
-const siderConfig: LayoutSiderProps = {
-	collapseMode: 'width',
-	width: 240,
-	showTrigger: true,
-	bordered: true,
-	nativeScrollbar: false,
-	contentStyle: 'padding: 4px 8px;',
-};
-
-// 菜单样式配置
-const menuConfig: MenuProps = {
-	rootIndent: 12,
-	indent: 22,
-	collapsedIconSize: 15,
-	iconSize: 15,
-};
+import RouterContent from '@/layout/main-layout/router-content.vue';
+import Menu from './menu/index.vue';
 </script>
 
 <style scoped lang="less">
@@ -70,7 +37,6 @@ const menuConfig: MenuProps = {
 .layout-sider,
 .layout-content {
 	height: calc(100vh - @nav-size-height);
-	transition: all 0.2s ease-in-out;
 }
 
 .layout-navbar {
