@@ -1,4 +1,4 @@
 export enum RoutePath {
 	LoginPath = 'login',
-	DefaultPath = 'list',
+	DefaultPath = 'basic-list',
 }

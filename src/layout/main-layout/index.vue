@@ -12,6 +12,7 @@
 				content-style="padding: 24px;"
 				class="layout-content"
 			>
+				<TabBar />
 				<n-card style="height: 100%">
 					<router-content />
 				</n-card>
@@ -24,6 +25,7 @@
 import Navbar from '@/layout/main-layout/navbar/navbar.vue';
 import RouterContent from '@/layout/main-layout/router-content.vue';
 import Menu from './menu/index.vue';
+import TabBar from './tab-bar.vue';
 </script>
 
 <style scoped lang="less">

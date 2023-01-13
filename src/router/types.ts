@@ -1,4 +1,5 @@
-import { RouteRecordRaw } from 'vue-router';
+import { defineComponent } from 'vue';
+import { RouteRecordRaw, RouteMeta, NavigationGuard } from 'vue-router';
 
 export type AppMeta = {
 	meta?: {
@@ -13,4 +14,21 @@ export type AppMeta = {
 	};
 };
 
-export type AppRouteRecordRaw = RouteRecordRaw & AppMeta;
+export type Component<T = any> =
+	| ReturnType<typeof defineComponent>
+	// @ts-ignore
+	| (() => Promise<typeof import('*.vue')>)
+	| (() => Promise<T>);
+
+export type AppRouteRecordRaw = {
+	path?: string;
+	name?: string | symbol;
+	meta?: RouteMeta;
+	redirect?: string;
+	component?: Component | string;
+	children?: AppRouteRecordRaw[];
+	alias?: string | string[];
+	props?: Record<string, any>;
+	beforeEnter?: NavigationGuard | NavigationGuard[];
+	fullPath?: string;
+};
