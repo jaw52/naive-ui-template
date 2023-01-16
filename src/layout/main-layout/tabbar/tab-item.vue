@@ -1,17 +1,17 @@
 <template>
-	<router-link
-		:to="{ path: item.path, params: item.params, query: item.query }"
+	<n-tag
+		closable
+		:type="isCurrentRoute ? 'info' : undefined"
+		@close.stop="closeCurrent()"
+		@contextmenu.prevent="handleContextMenu"
 	>
-		<n-tag
+		<router-link
 			class="tab-item"
-			closable
-			:type="isCurrentRoute ? 'info' : undefined"
-			@close.stop="closeCurrent()"
-			@contextmenu.prevent="handleContextMenu"
+			:to="{ path: item.path, params: item.params, query: item.query }"
 		>
 			{{ item.title }}
-		</n-tag>
-	</router-link>
+		</router-link>
+	</n-tag>
 
 	<n-dropdown
 		:options="options"

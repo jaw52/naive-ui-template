@@ -1,5 +1,8 @@
 <template>
 	<div class="navbar">
+		<!-- 面包屑 -->
+		<breadcrumb />
+
 		<n-space align="center" :size="20">
 			<transition name="fade" mode="out-in" appear>
 				<tooltip-button
@@ -45,8 +48,9 @@ import TooltipButton from '@/layout/main-layout/components/tooltip-button.vue';
 import AvatarDropdown from '@/layout/main-layout/navbar/avatar-dropdown.vue';
 import PageSetting from '@/layout/main-layout/navbar/page-setting.vue';
 import { useThemeStore } from '@/store';
-import { Moon, SettingsOutline, Sunny, ShirtOutline } from '@vicons/ionicons5';
+import { Moon, ShirtOutline, Sunny } from '@vicons/ionicons5';
 import { ref } from 'vue';
+import Breadcrumb from '../breadcrumb/index.vue';
 
 const visible = ref(false);
 const themeStore = useThemeStore();
@@ -55,7 +59,7 @@ const themeStore = useThemeStore();
 <style scoped lang="less">
 .navbar {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
 	height: 60px;
 	padding: 0 20px;
