@@ -5,6 +5,8 @@
 		<n-layout>
 			<n-layout-header class="layout-navbar" bordered>
 				<navbar />
+				<n-divider style="margin: 0" />
+				<tab-bar />
 			</n-layout-header>
 
 			<n-layout-content
@@ -12,7 +14,6 @@
 				content-style="padding: 24px;"
 				class="layout-content"
 			>
-				<TabBar />
 				<n-card style="height: 100%">
 					<router-content />
 				</n-card>
@@ -25,11 +26,11 @@
 import Navbar from '@/layout/main-layout/navbar/navbar.vue';
 import RouterContent from '@/layout/main-layout/router-content.vue';
 import Menu from './menu/index.vue';
-import TabBar from './tab-bar.vue';
+import TabBar from './tabbar/tab-bar.vue';
 </script>
 
 <style scoped lang="less">
-@nav-size-height: 60px;
+@nav-size-height: 98px;
 
 .layout {
 	width: 100%;

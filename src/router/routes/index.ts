@@ -1,9 +1,9 @@
 import { RoutePath } from '@/enums/route';
 import { appRoutes } from '@/router/routes/appRoutes';
-import { NOT_FOUND_ROUTE } from '@/router/routes/base';
-import { AppRouteRecordRaw } from '@/router/types';
+import { RouteRecordRaw } from 'vue-router';
+import { NOT_FOUND_ROUTE, REDIRECT_MAIN } from './base';
 
-export const routes: AppRouteRecordRaw[] = [
+export const routes = [
 	{
 		path: '/',
 		redirect: RoutePath.LoginPath,
@@ -18,5 +18,6 @@ export const routes: AppRouteRecordRaw[] = [
 		},
 	},
 	...appRoutes,
+	REDIRECT_MAIN,
 	NOT_FOUND_ROUTE,
-];
+] as RouteRecordRaw[];

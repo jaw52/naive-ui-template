@@ -16,7 +16,7 @@
 			v-model:collapsed="collapsed"
 			:inverted="settingStore.dark"
 			v-bind="menuConfig"
-			:default-value="(route.name as string)"
+			:value="(route.name as string)"
 			:options="menuTree"
 			:expand-icon="renderIcon(CaretDownOutline)"
 		/>

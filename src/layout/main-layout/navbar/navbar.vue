@@ -25,7 +25,7 @@
 
 			<tooltip-button content="页面设置" @click="visible = true">
 				<n-icon size="16">
-					<settings-outline />
+					<shirt-outline />
 				</n-icon>
 			</tooltip-button>
 
@@ -45,7 +45,7 @@ import TooltipButton from '@/layout/main-layout/components/tooltip-button.vue';
 import AvatarDropdown from '@/layout/main-layout/navbar/avatar-dropdown.vue';
 import PageSetting from '@/layout/main-layout/navbar/page-setting.vue';
 import { useThemeStore } from '@/store';
-import { Moon, SettingsOutline, Sunny } from '@vicons/ionicons5';
+import { Moon, SettingsOutline, Sunny, ShirtOutline } from '@vicons/ionicons5';
 import { ref } from 'vue';
 
 const visible = ref(false);
@@ -57,7 +57,7 @@ const themeStore = useThemeStore();
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	height: 100%;
+	height: 60px;
 	padding: 0 20px;
 }
 </style>
