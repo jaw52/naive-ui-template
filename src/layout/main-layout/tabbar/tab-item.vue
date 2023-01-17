@@ -1,6 +1,6 @@
 <template>
 	<n-tag
-		closable
+		:closable="!disabledClose"
 		:type="isCurrentRoute ? 'info' : undefined"
 		@close.stop="closeCurrent()"
 		@contextmenu.prevent="handleContextMenu"
@@ -59,6 +59,7 @@ const route = useRoute();
 const tabBarStore = useTabBarStore();
 
 const isCurrentRoute = computed(() => route.fullPath === props.item.fullPath);
+const disabledClose = computed(() => tabBarStore.tabList.length === 1);
 
 const options = computed(
 	() =>
@@ -72,7 +73,7 @@ const options = computed(
 			{
 				key: Eaction.current,
 				label: '关闭当前标签页',
-				disabled: tabBarStore.tabList.length === 1,
+				disabled: disabledClose.value,
 				icon: renderIcon(CloseOutline),
 			},
 			{
