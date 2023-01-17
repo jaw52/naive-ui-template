@@ -5,7 +5,7 @@ export default ({
 	mock?: boolean;
 	setup: () => void;
 }) => {
-	if (mock && process.env.NODE_ENV !== 'production') setup();
+	if (mock && !import.meta.env.VITE_APP_DISABLE_MOCK) setup();
 };
 
 export const successResponseWrap = (data: unknown) => ({

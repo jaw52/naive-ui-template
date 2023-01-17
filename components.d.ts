@@ -7,10 +7,8 @@ export {};
 
 declare module '@vue/runtime-core' {
 	export interface GlobalComponents {
-		HelloWorld: typeof import('./src/components/HelloWorld.vue')['default'];
 		MsgProvider: typeof import('./src/components/msg-provider.vue')['default'];
 		NAvatar: typeof import('naive-ui')['NAvatar'];
-		NBadge: typeof import('naive-ui')['NBadge'];
 		NBreadcrumb: typeof import('naive-ui')['NBreadcrumb'];
 		NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem'];
 		NButton: typeof import('naive-ui')['NButton'];
@@ -23,33 +21,21 @@ declare module '@vue/runtime-core' {
 		NDrawer: typeof import('naive-ui')['NDrawer'];
 		NDrawerContent: typeof import('naive-ui')['NDrawerContent'];
 		NDropdown: typeof import('naive-ui')['NDropdown'];
-		NEl: typeof import('naive-ui')['NEl'];
 		NForm: typeof import('naive-ui')['NForm'];
 		NFormItem: typeof import('naive-ui')['NFormItem'];
-		NGradientText: typeof import('naive-ui')['NGradientText'];
-		NH2: typeof import('naive-ui')['NH2'];
 		NH3: typeof import('naive-ui')['NH3'];
-		NH4: typeof import('naive-ui')['NH4'];
-		NH5: typeof import('naive-ui')['NH5'];
 		NH6: typeof import('naive-ui')['NH6'];
 		NIcon: typeof import('naive-ui')['NIcon'];
 		NInput: typeof import('naive-ui')['NInput'];
 		NLayout: typeof import('naive-ui')['NLayout'];
 		NLayoutContent: typeof import('naive-ui')['NLayoutContent'];
-		NLayoutFooter: typeof import('naive-ui')['NLayoutFooter'];
 		NLayoutHeader: typeof import('naive-ui')['NLayoutHeader'];
-		NLayoutSider: typeof import('naive-ui')['NLayoutSider'];
-		NMenu: typeof import('naive-ui')['NMenu'];
 		NMessageProvider: typeof import('naive-ui')['NMessageProvider'];
 		NNotificationProvider: typeof import('naive-ui')['NNotificationProvider'];
-		NPop: typeof import('naive-ui')['NPop'];
 		NPopover: typeof import('naive-ui')['NPopover'];
 		NResult: typeof import('naive-ui')['NResult'];
 		NSpace: typeof import('naive-ui')['NSpace'];
-		NSpin: typeof import('naive-ui')['NSpin'];
 		NSwitch: typeof import('naive-ui')['NSwitch'];
-		NTag: typeof import('naive-ui')['NTag'];
-		NText: typeof import('naive-ui')['NText'];
 		NTooltip: typeof import('naive-ui')['NTooltip'];
 		RouterLink: typeof import('vue-router')['RouterLink'];
 		RouterView: typeof import('vue-router')['RouterView'];

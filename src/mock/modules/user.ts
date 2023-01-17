@@ -2,6 +2,7 @@ import Mock from 'mockjs';
 import setupMock, { successResponseWrap, failResponseWrap } from '../utils';
 import { MockParams } from '../types';
 import { isLogin } from '@/utils/auth';
+import { loadImages } from '@/utils/viteUtils';
 
 setupMock({
 	setup() {
@@ -10,7 +11,7 @@ setupMock({
 			if (isLogin()) {
 				const role = window.localStorage.getItem('userRole') || 'admin';
 				return successResponseWrap({
-					avatar: '//inews.gtimg.com/newsapp_bt/0/13084452391/1000',
+					avatar: loadImages('avatar.png'),
 					name: '空条承太郎',
 					role,
 				});

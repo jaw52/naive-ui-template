@@ -1,5 +1,4 @@
 import { AppRouteRecordRaw } from '@/router/types';
-import { RouteLocationNormalized } from 'vue-router';
 import { useUserStore } from '@/store';
 
 export default function usePermission() {
