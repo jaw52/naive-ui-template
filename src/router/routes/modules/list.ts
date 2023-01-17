@@ -17,7 +17,6 @@ const LIST: AppRouteRecordRaw = {
 			name: 'basic-list',
 			meta: {
 				title: '基础列表',
-				ignoreKeepAlive: true,
 			},
 			component: () => import('@/views/base-list/index.vue'),
 		},

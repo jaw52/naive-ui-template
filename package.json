@@ -20,6 +20,7 @@
 	},
 	"dependencies": {
 		"@ant-design/colors": "^7.0.0",
+		"@vicons/antd": "^0.12.0",
 		"@vicons/ionicons5": "^0.12.0",
 		"@vicons/material": "^0.12.0",
 		"@vueuse/core": "^9.10.0",
@@ -30,7 +31,8 @@
 		"pinia": "^2.0.28",
 		"vfonts": "^0.0.3",
 		"vue": "^3.2.45",
-		"vue-router": "^4.1.6"
+		"vue-router": "^4.1.6",
+		"vuedraggable": "^4.1.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.4.1",

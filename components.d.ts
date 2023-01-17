@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
 		NCard: typeof import('naive-ui')['NCard'];
 		NCheckbox: typeof import('naive-ui')['NCheckbox'];
 		NConfigProvider: typeof import('naive-ui')['NConfigProvider'];
+		NDataTable: typeof import('naive-ui')['NDataTable'];
 		NDialogProvider: typeof import('naive-ui')['NDialogProvider'];
 		NDivider: typeof import('naive-ui')['NDivider'];
 		NDrawer: typeof import('naive-ui')['NDrawer'];
@@ -41,6 +42,8 @@ declare module '@vue/runtime-core' {
 		NMenu: typeof import('naive-ui')['NMenu'];
 		NMessageProvider: typeof import('naive-ui')['NMessageProvider'];
 		NNotificationProvider: typeof import('naive-ui')['NNotificationProvider'];
+		NPop: typeof import('naive-ui')['NPop'];
+		NPopover: typeof import('naive-ui')['NPopover'];
 		NResult: typeof import('naive-ui')['NResult'];
 		NSpace: typeof import('naive-ui')['NSpace'];
 		NSpin: typeof import('naive-ui')['NSpin'];
