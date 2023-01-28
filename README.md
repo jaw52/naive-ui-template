@@ -2,6 +2,8 @@
 
 以Vite 4.0 + Pinia + naive-ui为基础的项目模板。目标是尽量保持简洁，便于扩展
 
+预览：https://jaw52.github.io/naive-ui-template/
+
 ## 运行环境
 
 推荐打开`prettier`、`eslint`便于代码格式化和校验
