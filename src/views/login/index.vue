@@ -1,6 +1,6 @@
 <template>
 	<div class="view-account">
-		<div class="view-account-header"></div>
+		<div ref="modelRef" class="model" />
 		<div class="view-account-container">
 			<div class="view-account-top">
 				<div class="view-account-top-logo">
@@ -94,7 +94,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { FormRules, useMessage } from 'naive-ui';
 import { useUserStore } from '@/store';
@@ -107,6 +107,7 @@ import {
 	PersonOutline,
 } from '@vicons/ionicons5';
 import { Tips } from '@/enums/tips';
+import { initModel } from './initModel';
 
 interface FormState {
 	username: string;
@@ -162,6 +163,11 @@ const handleSubmit = () => {
 		}
 	});
 };
+
+const modelRef = ref();
+onMounted(() => {
+	initModel(modelRef.value);
+});
 </script>
 
 <style lang="less" scoped>
@@ -213,5 +219,13 @@ const handleSubmit = () => {
 	.page-account-container {
 		padding: 32px 0 24px 0;
 	}
+}
+
+.model {
+	width: 800px;
+	height: 800px;
+	position: fixed;
+	right: 100px;
+	bottom: 100px;
 }
 </style>
