@@ -71,21 +71,25 @@ export class ThreeBase {
 		}
 		renderer.outputEncoding = THREE.sRGBEncoding;
 		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.shadowMap.enabled = true;
+		renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-		this.element.appendChild(renderer.domElement);
 		return renderer;
 	}
 
 	private setupControl() {
 		const control = new OrbitControls(this.camera, this.renderer.domElement);
-		// 禁止鼠标右键拖动
-		control.enablePan = false;
 		control.maxDistance = 200;
 		control.update();
 		return control;
 	}
 
-	renderModel() {
+	render() {
+		this.element.appendChild(this.renderer.domElement);
+		this.animate();
+	}
+
+	animate() {
 		if (this.stats !== null) {
 			this.stats.update();
 		}
@@ -97,7 +101,7 @@ export class ThreeBase {
 
 		this.control.update();
 		this.renderer.render(this.scene, this.camera);
-		requestAnimationFrame(this.renderModel.bind(this));
+		requestAnimationFrame(this.animate.bind(this));
 		return this;
 	}
 
@@ -129,14 +133,27 @@ export class ThreeBase {
 		return this;
 	}
 
-	addGridHelper(size = 100, divisions = 10) {
+	addGridHelper(
+		model: THREE.Object3D<THREE.Event>,
+		size = 100,
+		divisions = 10
+	) {
 		const gridHelper = new THREE.GridHelper(
 			size,
 			divisions,
 			0xff0000,
 			0x444444
 		);
+
+		const boxHelper = new THREE.BoxHelper(model, 0xffff00);
+		this.scene.add(boxHelper);
 		this.scene.add(gridHelper);
+		return this;
+	}
+
+	addDirectionalLightHelper(light: THREE.DirectionalLight, size = 5) {
+		const helper = new THREE.DirectionalLightHelper(light, size);
+		this.scene.add(helper);
 		return this;
 	}
 

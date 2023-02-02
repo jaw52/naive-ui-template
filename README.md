@@ -24,3 +24,7 @@ npm run dev
 1. [arco-design-pro-vue](https://arco.design/vue/docs/pro/start)
 2. [naive-ui-admin](https://github.com/jekip/naive-ui-admin)
 3. [soybean-admin](https://github.com/honghuangdc/soybean-admin)
+
+## 特别
+
+3D模型来自[seafoam](https://sketchfab.com/seafoam)

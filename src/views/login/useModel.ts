@@ -3,14 +3,33 @@ import * as THREE from 'three';
 import { ref } from 'vue';
 import { ThreeBase } from './ThreeBase';
 
-const loadLight = (scene: THREE.Scene) => {
-	const ambient = new THREE.AmbientLight(0xaed6f1);
-	scene.add(ambient);
+const loadLight = () => {
+	// 创建全局光照
+	const ambient = new THREE.AmbientLight(0xffdada);
 
-	const directionalLight = new THREE.DirectionalLight(0xf9e79f, 0.3);
-	directionalLight.position.set(50, 50, 50);
+	// 创建地平面
+	const planeGeometry = new THREE.PlaneGeometry(300, 300); // 生成平面几何
+	const planeMaterial = new THREE.MeshLambertMaterial();
+	const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial); // 生成平面网格
+	planeMesh.receiveShadow = true; // 设置平面网格为接受阴影的投影面
+	planeMesh.rotation.x = -Math.PI / 2; // 绕X轴旋转90度
+	planeMesh.position.y = -23;
 
-	scene.add(directionalLight);
+	// 创建平行光
+	const directionalLight = new THREE.DirectionalLight(0xf9e79f);
+	directionalLight.position.set(-100, 50, -100);
+	directionalLight.castShadow = true;
+
+	directionalLight.shadow.mapSize.height = 1024;
+	directionalLight.shadow.mapSize.width = 1024;
+	directionalLight.shadow.camera.near = 20;
+	directionalLight.shadow.camera.far = 4000;
+	directionalLight.shadow.camera.left = -50;
+	directionalLight.shadow.camera.right = 50;
+	directionalLight.shadow.camera.top = 50;
+	directionalLight.shadow.camera.bottom = -50;
+
+	return { ambient, planeMesh, directionalLight };
 };
 
 export const useModel = () => {
@@ -33,22 +52,35 @@ export const useModel = () => {
 			});
 			const { scene: model } = gltf;
 			model.scale.set(20, 20, 20);
-			model.position.y = -20;
+			model.position.y = -22;
+
 			model.traverse((obj) => {
+				if (obj.type === 'Mesh') {
+					obj.castShadow = true;
+					obj.receiveShadow = true;
+				}
+
 				if (obj.type === 'SkinnedMesh') {
 					// 即使物体中心点看不到也不消失（模型实际中心点位置跑到了相机的视锥体外面）
 					obj.frustumCulled = false;
 				}
 			});
 
-			loadLight(threeBase.scene);
+			const { ambient, planeMesh, directionalLight } = loadLight();
 
-			threeBase.scene.add(model);
 			if (import.meta.env.DEV) {
-				threeBase.addAxesHelper(10).addStats().addGridHelper();
+				threeBase
+					.addStats()
+					.addGridHelper(model)
+					.addAxesHelper(10)
+					.addDirectionalLightHelper(directionalLight, 10);
 			}
 
-			threeBase.renderModel();
+			[ambient, planeMesh, directionalLight, model].forEach((item) =>
+				threeBase.scene.add(item)
+			);
+
+			threeBase.render();
 		} catch (error) {
 			console.error(error);
 			message.warning('模型加载失败');
