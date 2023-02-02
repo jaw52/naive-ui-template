@@ -1,6 +1,5 @@
 <template>
 	<div class="view-account">
-		<div ref="modelRef" class="model" />
 		<div class="view-account-container">
 			<div class="view-account-top">
 				<div class="view-account-top-logo">
@@ -90,6 +89,17 @@
 				</n-form>
 			</div>
 		</div>
+
+		<div class="model-wrapper">
+			<n-progress
+				v-if="progress < 100"
+				type="line"
+				:percentage="progress"
+				:indicator-placement="'inside'"
+				processing
+			/>
+			<div ref="modelRef" class="model" />
+		</div>
 	</div>
 </template>
 
@@ -107,7 +117,7 @@ import {
 	PersonOutline,
 } from '@vicons/ionicons5';
 import { Tips } from '@/enums/tips';
-import { initModel } from './initModel';
+import { useModel } from './useModel';
 
 interface FormState {
 	username: string;
@@ -165,15 +175,20 @@ const handleSubmit = () => {
 };
 
 const modelRef = ref();
+const { init, progress } = useModel();
+
 onMounted(() => {
-	initModel(modelRef.value);
+	init(modelRef.value);
 });
 </script>
 
 <style lang="less" scoped>
 .view-account {
+	padding-left: 270px;
+	padding-bottom: 160px;
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	height: 100vh;
 	overflow: auto;
 
@@ -182,7 +197,6 @@ onMounted(() => {
 		padding: 32px 12px;
 		max-width: 384px;
 		min-width: 320px;
-		margin: 0 auto;
 	}
 
 	&-top {
@@ -221,11 +235,16 @@ onMounted(() => {
 	}
 }
 
+.model-wrapper {
+	width: 600px;
+	padding: 8px;
+}
 .model {
-	width: 800px;
-	height: 800px;
-	position: fixed;
-	right: 100px;
-	bottom: 100px;
+	width: 600px;
+	height: 600px;
+}
+
+.model:hover {
+	cursor: move;
 }
 </style>

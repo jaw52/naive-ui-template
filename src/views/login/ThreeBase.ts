@@ -34,6 +34,7 @@ export class ThreeBase {
 
 	constructor(element: HTMLElement, params?: Partial<InitState>) {
 		this.element = element;
+
 		this.initState = {
 			fov: 60,
 			near: 0.1,
@@ -56,7 +57,7 @@ export class ThreeBase {
 
 		const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
-		camera.position.set(50, 100, 100);
+		camera.position.set(30, 40, 60);
 		camera.lookAt(this.scene.position);
 
 		return camera;
@@ -79,7 +80,6 @@ export class ThreeBase {
 		const control = new OrbitControls(this.camera, this.renderer.domElement);
 		// 禁止鼠标右键拖动
 		control.enablePan = false;
-		control.minDistance = 60;
 		control.maxDistance = 200;
 		control.update();
 		return control;
@@ -95,13 +95,13 @@ export class ThreeBase {
 			(this.mixer as THREE.AnimationMixer).update(delta);
 		}
 
-		requestAnimationFrame(this.renderModel.bind(this));
 		this.control.update();
 		this.renderer.render(this.scene, this.camera);
+		requestAnimationFrame(this.renderModel.bind(this));
 		return this;
 	}
 
-	loadGLTF(url: string, onProgress = (progress: number) => {}): Promise<GLTF> {
+	loadGLTF(url: string, onProgress?: (v: number) => void): Promise<GLTF> {
 		const loader = new GLTFLoader();
 
 		return new Promise<GLTF>((resolve, reject) => {
@@ -116,7 +116,7 @@ export class ThreeBase {
 
 					resolve(gltf);
 				},
-				(xhr) => onProgress(Math.round((xhr.loaded / xhr.total) * 100)),
+				(xhr) => onProgress?.(Math.round((xhr.loaded / xhr.total) * 100)),
 				(error) => reject(error)
 			);
 		});

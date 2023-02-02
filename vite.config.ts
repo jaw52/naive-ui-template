@@ -42,7 +42,8 @@ export default defineConfig(({ mode }) => {
 			rollupOptions: {
 				output: {
 					manualChunks: {
-						vue: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
+						vue: ['vue', 'vue-router', 'pinia', '@vueuse/core', 'vuedraggable'],
+						three: ['three'],
 					},
 				},
 			},
