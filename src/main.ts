@@ -1,11 +1,14 @@
-import { createApp } from 'vue';
-import store from './store';
+import '@/plugins/setupMock';
 import router from '@/router';
+import { setupTailwind } from '@/plugins/setupTailwind';
+import '@/styles/index.css';
+import '@unocss/reset/tailwind.css';
+// eslint-disable-next-line import/no-unresolved
+import 'uno.css';
+import { createApp } from 'vue';
 import App from './App.vue';
 import directives from './directives';
-import '@/styles/index.css';
-import { setupTailwind } from '@/plugins/setupTailwind';
-import '@/plugins/setupMock';
+import store from './store';
 
 async function setupApp() {
 	const app = createApp(App);
